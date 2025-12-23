@@ -1,6 +1,6 @@
 #include<arm_neon.h>
 #include<cstdint>
-#include<math>
+#include<cmath>
 
 #define __fp16 float16_t
 
@@ -66,3 +66,10 @@ void Qint8_Gemm(const Qint8x16 *src0,const Qint8x16 *src1,const Qint8x16 *dst,in
 }
 
 
+double sigmoid(double x){
+    return 1.0/(1.0+std::exp(-x));
+}
+
+float sigmoidf(float x) {
+    return 1.0f / (1.0f + std::expf(-x));
+}
