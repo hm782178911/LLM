@@ -1,5 +1,6 @@
 #include<cuda_runtime.h>
 #include<stdio.h>
+#include<stdlib.h>
 
 #define cudaCheck(err) _cudaCheck(err,__FILE__,__LINE__)
 
