@@ -19,6 +19,10 @@ void _cudaCheck(cudaError_t error,const char *file,int line){
     return;
 }
 
+/*
+trade off:
+compute cost increase and memory cost decrease
+*/
 __global__ void elementwise_add_float4(float* a,float* b,float* c,int N){
     int idx=(blockDim.x * blockIdx.x + threadIdx.x)*4;
     if(idx >=N)return;
@@ -77,6 +81,13 @@ int main(){
     for(int i=0;i<N;i++)printf("%f ",c_h[i]);
     printf("\n");
 
+    // 释放内存
+    free(a_h);
+    free(b_h);
+    free(c_h);
+    cudaFree(a_d);
+    cudaFree(b_d);
+    cudaFree(c_d);
 
     return 0;
 }
